@@ -31,7 +31,13 @@ function Form() {
 
   function getHobbies(event) {
     event.preventDefault();
-    setHobbies(event.target.value);
+    const hobbyValues = [...event.target.selectedOptions].map(
+      (opt) => opt.value
+    );
+    function separateItems(hobby) {
+      return hobby + " ";
+    }
+    setHobbies(hobbyValues.map(separateItems));
   }
 
   function showOutput(event) {
